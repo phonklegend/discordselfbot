@@ -1,7 +1,7 @@
 import telebot, sqlite3, time, requests, aeval, json, requests, shutil, subprocess, sys, psutil, asyncio, schedule, threading, string, random, os, tempfile, math
 from telebot import types
 from subprocess import Popen, PIPE
-from pyqiwip2p import QIWIApi
+from qiwimaster import QIWIApi
 import datetime as dt
 
 
@@ -9,8 +9,8 @@ import datetime as dt
 
 admin = [2106708441]#айди 
 name_bot = "Paradise | Discord Self Bot"
-token = "2106708441"#Токен бота в тг
-self_all = [["Test Bot", "Тестовый селф бот, который имеет только команду >ping", "test_", False], ["Default Bot", "Дефолтный нечем не примечательный бот\n\nИмеет основные команды как: ping, spam, hack, crash, python\nЕго хелп: https://prnt.sc/26pqxgr", "DefultBot_", False], ["ASAPok Bot", "Описание", "ASAbot_", True]]
+token = "5205520117:AAFTd-DhClN95_OSiJE-yOM-3mZRjA-w3Yw"#Токен бота в тг
+self_all = [["Test Bot", "Тестовый селф бот, который имеет только команду >ping", "test_", False], ["Default Bot", "Обычный бот\n\nИмеет основные команды как: ping, spam, hack, crash, python\nЕго хелп: https://prnt.sc/26pqxgr", "DefultBot_", False], ["Alt Bot", "Менее функциональный бот", "ASAbot_", True]]
 qiwi_p2p = "eyJ2ZXJzaW9uIjoiUDJQIiwiZGF0YSI6eyJwYXlpbl9tZXJjaGFudF9zaXRlX3VpZCI6Imw2anE0Ni0wMCIsInVzZXJfaWQiOiI3OTUzNjQzNTMzMiIsInNlY3JldCI6IjQ4M2VjZWE5YzE4ZDM2ZTMxMjA4N2E1ZmM1M2I4OTRiN2U1NzcwYTc5NzEwMzM0MGVkNDRlNTkwNTFjYzc5OWMifX0="#токен киви p2p
 qiwi_token = "d87e3c4cf3fe53fe9304b8c88f841179"#токен киви
 qiwi_nomer =  79536435332 #номер киви
@@ -81,19 +81,13 @@ def welcome(message):
     keyboard.add(key_yes)
     bot.send_message(message.chat.id, """
 Соглашение:
-1.1 Подлизываясь ботом вы принимаете полузаводское соглашение.
-1.2 Если вас что-то не устраивает то покиньте бота.
+1.1 Пользуясь ботом вы принимаете пользовательское соглашение.
 1.3 Соглашение может быть изменено без вашего известия. 
-2.1 Мы не несëм ответственность за ваши аккаунты.
 2.2 Мы не передаем ваши аккаунты третьим лицам.
 2.3 Мы используем надежный хостинг и мы защищаем ваши аккаунты от утечек.
-2.4 К вашим аккаунтам имеет доступ только хостинг, владелец и совладелец.
-2.5 Владельцы могут делать что им вздумается с базой данных и содержимое в ней.
-3.1 Все переведëные нам деньги рассматриваются как благотворительность.
-4.1 За багаюз, обман, оскорбление администрации выдаётся бан.
 4.2 Мы можем в любой момент закрыть проект, передать или продать это будет считаться за смену владельца. 
-4.3 На этот момент всего 1 владелец @FickyXXL.
-5.1 Что-бы удалить ваш аккаунт из базы надо написать администрации и заполнить заявку, которая она даст.
+----------------
+Владелец — @strafeassistant
 """, reply_markup=keyboard)
     for x in admin:
       keyboard = types.InlineKeyboardMarkup()
@@ -112,7 +106,7 @@ def welcome(message):
     
     markup.add(i0, i1, i2)
     markup.add(i3, i4)
-    bot.send_message(message.chat.id, f"+", reply_markup=markup)
+    bot.send_message(message.chat.id, f"Меню открыто:", reply_markup=markup)
     # bot.forward_message(message.from_user.id, 1160483075, 2570, reply_markup=markup)
     
 #   print(bot.send_video(message.chat.id, img, caption=f"""
